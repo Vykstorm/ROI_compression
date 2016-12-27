@@ -16,7 +16,6 @@ function visualizar_regiones (M, R)
 		p = R{i,1};
 		x = p(1); y = p(2);
 		[n,m] = size(R{i,2});
-		rectangle('Position', [x,y,n,m], 'LineWidth', 2, 'EdgeColor', 'g');
-		
+		rectangle('Position', [y,x,n,m], 'LineWidth', 2, 'EdgeColor', 'g');
 	end;
 end;
