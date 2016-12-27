@@ -7,5 +7,5 @@
 addpath('./contrastes');
 addpath('./imageset');
 addpath('./clustering');
-
+addpath('./utility');
 
