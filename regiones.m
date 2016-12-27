@@ -43,7 +43,7 @@ function [R] = regiones(M, M2, f)
 	for i=1:k
 		x = P(i,1); y = P(i,2); % Posición de la región en la imágen
 		l = S((x-1)*m + y);  % Tamaño de la región
-		pixels = M2(x:x+l-1, y:y+l-1); % Píxeles de la región.
-		R(i,2) = pixels;
+		pixels = M2(x:x+l-1, y:y+l-1, :); % Píxeles de la región.
+		R{i,2} = pixels;
 	end;
 end 

@@ -10,11 +10,12 @@
 function [ M ] = unir_regiones(R, S)
 	M = zeros(S);
 	k = size(R,1); % nº regiones.
+	
 	for i=1:k % Por cada región..
 		p = R{i,1};
 		x = p(1); y = p(2); % Posición de la región.
 		pixels = R{i,2}; % Pixeles de la región.
-		[n,m] = size(pixels);
-		M(x:x+n-1, y:y+m-1) = pixels;
+		[n,m,p] = size(pixels);
+		M(x:x+n-1, y:y+m-1,:) = pixels;
 	end;
 end
