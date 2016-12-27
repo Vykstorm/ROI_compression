@@ -6,3 +6,6 @@
 
 addpath('./contrastes');
 addpath('./imageset');
+addpath('./clustering');
+
+
