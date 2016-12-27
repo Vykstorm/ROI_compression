@@ -1,4 +1,4 @@
-% Este método devuelve el histograma de un conjunto de datos de
+% Este método devuelve la frecuencia de aparición de cada dato en un conjunto de datos de
 % entrada. 
 % Devuelve como retorno, por un lado, un vector columna Y con los datos
 % que aparecen al menos una vez en X y otro vector columna H con su frecuencia
