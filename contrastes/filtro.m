@@ -11,7 +11,7 @@ function [ img2 ] = filtro( img, vecindad, f )
     
     % Añadimos filas y columnas a la imágen para poder aplicar el filtro
     % sobre los píxeles en los bordes de la imágen. 
-    img = padarray(img, [(p-1)/2, (q-1)/2]);
+    img = padarray(img, [(p-1)/2, (q-1)/2], 'replicate');
     
     % Aplico el filtro sobre cada pixel de la imágen.
     img2 = zeros(m,n);
