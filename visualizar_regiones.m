@@ -15,7 +15,7 @@ function visualizar_regiones (M, R)
 	for i=1:k  % Mostramos cada región..
 		p = R{i,1};
 		x = p(1); y = p(2);
-		[n,m] = size(R{i,2});
+		[n,m,p] = size(R{i,2});
 		rectangle('Position', [y,x,n,m], 'LineWidth', 2, 'EdgeColor', 'g');
 	end;
 end;
