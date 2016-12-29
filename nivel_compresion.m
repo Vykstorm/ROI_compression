@@ -1,8 +1,12 @@
 
 % Este método calcula el nivel de compresión a utilizar sobre los píxeles
-% de cada región, normalizado en el rango [0, 1]. El valor 0 indicará que los píxeles
-% de la región no deben comprimirse. En cambio, valor 1 establece que debe usarse la
-% compresión más alta posible. Valores en el rango (0, 1) indican puntos intermedios.
+% de cada región, normalizado en el rango [0, 1). El valor 0 indicará que los píxeles
+% de la región no deben comprimirse. Valores intermedios en el intervalo [0, 1) indican
+% que debe llevarse a cabo compresión. e.j: si el nivel de compresión es 1/2, habrá que
+% comprimir la región para transmitir solo el 50% de la información.  
+% Nota: Si s es el nº de pixeles en la región. El nivel de compresión máximo que se puede
+% dar es 1 - 1/s (al menos se ha de transmitir información equivalente a un 1 pixel por cada
+% región)
 %
 % Para el calculo de este valor, se utilizan dos variables:
 % - Proporción de pixeles que pertenecen a algún objeto y no al fondo:
@@ -48,6 +52,12 @@ function [L] = nivel_compresion(R)
 		% para calcular el nivel de compresión.
 		beta = 0.6;
 		
-		L(i) = beta * (1 - (1-p)^alpha) + (1-beta) * (1 - CT^theta);
+		l = beta * (1 - (1-p)^alpha) + (1-beta) * (1 - CT^theta);
+		
+		% Ajustamos el nivel de compresión. Como máximo será 1-1/s donde s es el nºpixeles
+		s = n * m;
+		l = min(l, 1-1/s);
+		
+		L(i) = l;
 	end;
 end
