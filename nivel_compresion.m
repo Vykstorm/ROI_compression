@@ -37,10 +37,10 @@ function [L] = nivel_compresion(R)
 		% Contraste total de la región de píxeles.
 		CT = CTmean(filtro(mean(M,3)/255, [3, 3], @CL1));
 		
-		% Este parámetro determina como debe reducirse el nivel de compresión
+		% Este parámetro determina como debe aumentarse el nivel de compresión
 		% a medida que la cantidad de píxeles de la región que no pertenecen al fondo
 		% de la imágen se reduce.
-		alpha = 12;
+		alpha = 7;
 		
 		% Este parámetro establce como debe reducirse el nivel de compresión a medida
 		% que aumenta el contraste de los pixeles de la región.
@@ -52,7 +52,7 @@ function [L] = nivel_compresion(R)
 		% para calcular el nivel de compresión.
 		beta = 0.75;
 		
-		l = beta * (1 - (1-p)^alpha) + (1-beta) * (1 - CT^theta);
+		l = beta * ((1-p)^alpha) + (1-beta) * (1 - CT^theta);
 		
 		% Ajustamos el nivel de compresión. Como máximo será 1-1/s donde s es el nºpixeles
 		s = n * m;
