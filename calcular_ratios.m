@@ -25,9 +25,15 @@ function [LCR] = calcular_ratios(cr, L, S)
 	
 	for i=1:nr
 		a = C(i,1); b = C(i,2);
-		T(i,:) = [repmat(0, [1 a-1]), 1, repmat(0, [1 b-a-1]), -L(a)/L(b), repmat(0, [1 nr-b])];
+		T(i,:) = [repmat(0, [1 a-1]), 1, repmat(0, [1 b-a-1]), -L(b)/L(a), repmat(0, [1 nr-b])];
 	end;
+	
 	T(nr+1,:) = S;
 	d = [zeros(nr,1); sum(S)/cr];
-	LCR = lsqnonneg(T, d);
+	LCR = 1./lsqnonneg(T, d);
+	
+	% Reajustamos los ratios (algunos ratios no son válidos)
+	LCR = bsxfun(@min, bsxfun(@max, LCR, 1), S);
 end;
+
+
