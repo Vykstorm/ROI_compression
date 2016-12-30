@@ -7,7 +7,7 @@
 % La función fun debe devolver un valor (puede devolver cualquier cosa).
 % Este método devolverá un array de celdas Y, donde 
 % Y(i) será el resultado de la llamada a fun con X(:,:,i)
-function [ Y ] = slicefun(X, fun)
+function [ Y ] = slicefun(fun, X)
 	k = size(X,3);
 	Y = cell(1,k);
 	for i=1:k
