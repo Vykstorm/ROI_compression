@@ -1,9 +1,15 @@
 
-% Este método trunca los n ultimos valores del vector X con el valor k 
-% si n es mayor o igual al número de elementos del vector, todos los elementos
-% se truncan con el valor k. 
-function [Y] = truncate(X, n, k)
-	s = length(X);
-	Y = ones(size(X)) * k;
-	Y(1:s-n) = X(1:s-n);
+% Este método trunca una matriz X. Los elementos truncados con el valor k
+% que se indica como parámetro.
+% Si Y es la matriz truncada. Y(i,j) = X(i,j) si i<r y j<c, y
+% Y(i,j) = 0 en caso contrario, donde B=[r,c]
+
+function [Y] = truncate(X, B, k)
+	[n,m] = size(X);
+	Y = X;
+	B = min(B, size(X));
+	if prod(B) > 0
+		r = n-B(1)+1; c = m-B(2)+1;
+		Y(r:n,c:m) = k;
+	end;
 end
