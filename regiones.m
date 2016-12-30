@@ -29,7 +29,7 @@
 % La tercera, es una submatriz del mapa M de la región correspondiente.
 function [R] = regiones(M, M2, f)
 	[n,m] = size(M);
-	F = @(D) cell2mat(slicefun(D, f));
+	F = @(D) cell2mat(slicefun(f, D));
 
 	S = reshape(full(qtdecomp(M, F))', 1, []);
 	P = find(S > 0);
