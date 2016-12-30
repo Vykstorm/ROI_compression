@@ -13,11 +13,12 @@
 function [R2,cr] = comprimir_regiones(R, LCR)
 	% Comprimos las regiones de forma individual.
 	nr = size(R,1);
-	R2 = [R(:,1) cellfun(@(M, lcr) comprimir(M, lcr), R(:,2), mat2cell(LCR, ones(1,nr), 1), 'UniformOutput', false)];
+	R2 = [R(:,1) cellfun(@(M, lcr) comprimir(M, lcr,size(M,1)), R(:,2), mat2cell(LCR, ones(1,nr), 1), 'UniformOutput', false)];
 	
 	% Calculamos el ratio de compresión global de la imágen alcanzado..
 	% Lo calculamos como el cociente entre el nº pixels de la imágen original y
 	% el nº de pixeles de la imágen transformada.
 	S = cellfun(@(X) size(X,1)*size(X,2), R(:,2));
-	cr = sum(S) / sum(floor(S ./ LCR));
+	cr = sum(S) / sum(S - floor(sqrt((S - S ./ LCR))).^2);
 end
+	
