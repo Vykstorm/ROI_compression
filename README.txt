@@ -15,11 +15,6 @@ blockproc 		- Procesamiento de imágen por bloques.
 
 dct2, idct2  	- Transformada del coseno
 
-
-- paquete "statistics"
-
-combnk 		    - Calculo de combinaciones de elementos
-
 - paquete "optim"
 
 lsqlin			- Encontrar solución a un problema de optimización, con restricciones lógicas
@@ -28,7 +23,6 @@ lsqlin			- Encontrar solución a un problema de optimización, con restricciones
 En octave, puede cargar todos los paquetes de la siguiente forma:
 pkg load image
 pkg load signal
-pkg load statistics
 pkg load optim
 
 
