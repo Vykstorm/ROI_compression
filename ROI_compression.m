@@ -43,6 +43,7 @@ function [ M2, I, cr2 ] = ROI_compression ( M, cr )
 	
 	%visualizar_regiones(C*255/q, R);
 	%visualizar_regiones(M, R);
+	%figure;
 	%imshow(uint8(unir_regiones(R, [256, 256, 3])));
 	
 	%% Cuantificar la cantidad de información necesaria que debe transmitirse,
@@ -58,7 +59,7 @@ function [ M2, I, cr2 ] = ROI_compression ( M, cr )
 	%% Calcular los ratios de compresión locales para cada región, para conseguir el ratio de compresión
 	% global indicado.
 	LCR = calcular_ratios(cr, L, cellfun(@(X) size(X,1)*size(X,2), R(:,2)));
-	%visualizar_niveles(M, [R(:,1:2) mat2cell(1 - (LCR-min(LCR))/(max(LCR)-min(LCR)), ones(1,nr), 1)]);
+	%visualizar_niveles(M, [R(:,1:2) mat2cell(1 ./ LCR, ones(1,nr), 1)]);
 	
 	%% Comprimimos cada una de las regiones individualmente.
 	[R2, cr2] = comprimir_regiones(R(:,1:2), LCR);
