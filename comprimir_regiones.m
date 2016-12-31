@@ -19,6 +19,6 @@ function [R2,cr] = comprimir_regiones(R, LCR)
 	% Lo calculamos como el cociente entre el nº pixels de la imágen original y
 	% el nº de pixeles de la imágen transformada.
 	S = cellfun(@(X) size(X,1)*size(X,2), R(:,2));
-	cr = sum(S) / sum(S - ceil(sqrt((S - S ./ LCR))).^2);
+	cr = sum(S) / sum(S - floor(sqrt((S - S ./ LCR))).^2);
 end
 	
