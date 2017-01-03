@@ -58,8 +58,9 @@ function [ M2, I, cr2 ] = ROI_compression ( M, cr )
 	
 	%% Calcular los ratios de compresión locales para cada región, para conseguir el ratio de compresión
 	% global indicado.
-	LCR = calcular_ratios(cr, L, cellfun(@(X) size(X,1)*size(X,2), R(:,2)));
-	%visualizar_niveles(M, [R(:,1:2) mat2cell(1 ./ LCR, ones(1,nr), 1)]);
+	S = cellfun(@(X) size(X,1)*size(X,2), R(:,2));
+	LCR = calcular_ratios(cr, L, S);
+	%visualizar_niveles(M, [R(:,1:2) mat2cell(1 - 1 ./ LCR, ones(1,nr), 1)]);
 	
 	%% Comprimimos cada una de las regiones individualmente.
 	[R2, cr2] = comprimir_regiones(R(:,1:2), LCR);
