@@ -40,7 +40,7 @@ function [L] = nivel_compresion(R)
 		% Este parámetro determina como debe aumentarse el nivel de compresión
 		% a medida que la cantidad de píxeles de la región que no pertenecen al fondo
 		% de la imágen se reduce.
-		alpha = 5;
+		alpha = 0.6;
 		
 		% Este parámetro establce como debe reducirse el nivel de compresión a medida
 		% que aumenta el contraste de los pixeles de la región.
@@ -50,7 +50,7 @@ function [L] = nivel_compresion(R)
 		% de píxeles que pertenecen a algún objeto de la imágen en la región para el calculo
 		% del nivel de compresión. 1-beta será la importancia que se la da al contraste
 		% para calcular el nivel de compresión.
-		beta = 0.75;
+		beta = 0.7;
 		
 		l = beta * ((1-p)^alpha) + (1-beta) * (1 - CT^theta);
 		
