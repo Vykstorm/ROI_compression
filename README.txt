@@ -29,6 +29,7 @@ optimización)
 
 
 
+El script principal es ROI_compression.m
 
 
 =====> DEPENDENCIAS <======
