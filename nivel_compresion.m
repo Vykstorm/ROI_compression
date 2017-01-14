@@ -41,7 +41,7 @@ function [L] = nivel_compresion(R)
 		% a medida que la cantidad de píxeles de la región que no pertenecen al fondo
 		% de la imágen se reduce.
 		alpha = 2;
-		
+
 		% Este parámetro establce como debe reducirse el nivel de compresión a medida
 		% que aumenta el contraste de los pixeles de la región.
 		theta = 0.3;
