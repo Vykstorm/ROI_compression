@@ -40,7 +40,7 @@ function [L] = nivel_compresion(R)
 		% Este parámetro determina como debe aumentarse el nivel de compresión
 		% a medida que la cantidad de píxeles de la región que no pertenecen al fondo
 		% de la imágen se reduce.
-		alpha = 0.6;
+		alpha = 4;
 		
 		% Este parámetro establce como debe reducirse el nivel de compresión a medida
 		% que aumenta el contraste de los pixeles de la región.
